@@ -8,6 +8,12 @@
 
 Status read_and_validate_decode_args(char *argv[],DecodeInfo *decInfo)
 {
+    //command validation
+    if(argv[2] == NULL){
+        printf("./a.out -d stego.bmp [decoded.txt]\n");
+        return e_failure;
+    }
+
     //stego file Extension validation
     char *dot = strchr(argv[2],'.');
 
@@ -46,7 +52,7 @@ Status read_and_validate_decode_args(char *argv[],DecodeInfo *decInfo)
         printf("Error : Signature is wrong\n");
         return e_failure;
     }
-    
+
     return e_success;
 }
 
@@ -165,7 +171,6 @@ Status decode_secret_file_extn(DecodeInfo *decInfo)
     }
 
     decInfo->extn_secret_file[i] = '\0';
-
 
     return e_success;
 }

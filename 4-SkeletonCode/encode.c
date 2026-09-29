@@ -41,6 +41,11 @@ uint get_image_size_for_bmp(FILE *fptr_image)
 
 Status read_and_validate_encode_args(char *argv[], EncodeInfo *encInfo)
 {
+    //command validation
+    if(argv[2] == NULL || argv[3] == NULL){
+        printf("./a.out -e source_file.bmp secret_file.txt [output_file.bmp]\n");
+        return e_failure;
+    }
     
     char *dot = strchr(argv[2],'.');        //source file extension validation
 
@@ -169,6 +174,11 @@ Status check_capacity(EncodeInfo *encInfo)
         return e_failure;
     }
 
+    // 2 - magic string
+    // 4 - size of extension of secret file 
+    // 4 - extension of secret file
+    // 4 - encode secret file size
+
     return e_success;
 }
 
@@ -221,6 +231,8 @@ Status encode_byte_to_lsb(char data, char *image_buffer)
             image_buffer[7-i] = image_buffer[7-i] & ~1;
         }
     }
+
+// MSB to LSB
 
     return e_success;
 }

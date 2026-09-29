@@ -1,8 +1,8 @@
 #ifndef DECODE_H
 #define DECODE_H
 
-#include <stdio.h>
-#include "types.h" //Contains User defined types
+#include<stdio.h>
+#include "types.h"
 
 #define MAX_FILE_SUFFIX 5
 
@@ -29,29 +29,31 @@ typedef struct _DecodeInfo
 /* Check operation type */
 OperationType check_operation_type(char opt);
 
-/* Read and validate decode args from argv */
+/* Read and validate Decode args from argv */
 Status read_and_validate_decode_args(char *argv[],DecodeInfo *decInfo);
 
-/* Perform the decoding */
+/* Perform the encoding */
 Status do_decoding(DecodeInfo *decInfo);
 
-/* Get file pointers for i/p and o/p files */
+/* Get File pointers for i/p and o/p files */
 Status open_decfiles(DecodeInfo *decInfo);
 
-/* Decode Magic string */
+/* Decode Magic String */
 Status decode_magic_string(const char *magic_string, DecodeInfo *decInfo);
 
-/* Decode secret file extenstion size */
+//Decode secret file extenstion size
 Status decode_secret_file_extn_size(DecodeInfo *decInfo);
 
-/* Decode secret file extension */
+/* Decode secret file extenstion */
 Status decode_secret_file_extn(DecodeInfo *decInfo);
 
 /* Decode secret file size */
 Status decode_secret_file_size(DecodeInfo *decInfo);
 
-/* Decode secret file data */
+/* Encode secret file data*/
 Status decode_secret_file_data(DecodeInfo *decInfo);
+
+
 
 
 #endif

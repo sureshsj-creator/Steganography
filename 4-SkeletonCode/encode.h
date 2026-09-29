@@ -20,8 +20,8 @@ typedef struct _EncodeInfo
     char *src_image_fname;
     FILE *fptr_src_image;
     uint image_capacity;
-    uint bits_per_pixel;
-    char image_data[MAX_IMAGE_BUF_SIZE];
+    // uint bits_per_pixel;
+    // char image_data[MAX_IMAGE_BUF_SIZE];
 
     /* Secret File Info */
     char *secret_fname;
@@ -75,14 +75,8 @@ Status encode_secret_file_extn(const char *file_extn, EncodeInfo *encInfo);
 /* Encode secret file size */
 Status encode_secret_file_size(long file_size, EncodeInfo *encInfo);
 
-/* Encode secret file size */
-Status encode_secret_file_size(long file_size, EncodeInfo *encInfo);
-
 /* Encode secret file data*/
 Status encode_secret_file_data(EncodeInfo *encInfo);
-
-/* Encode function, which does the real encoding */
-Status encode_data_to_image(char *data, int size, FILE *fptr_src_image, FILE *fptr_stego_image);
 
 /* Encode function, which does the real encoding */
 Status encode_size_to_lsb(int size,char *image_buffer);
